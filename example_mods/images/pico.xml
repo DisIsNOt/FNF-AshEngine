@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pico.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="p Idle Dance0000" x="0" y="0" width="351" height="461" frameX="0" frameY="-13" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0001" x="0" y="0" width="351" height="461" frameX="0" frameY="-13" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0002" x="351" y="0" width="350" height="468" frameX="0" frameY="-6" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0003" x="351" y="0" width="350" height="468" frameX="0" frameY="-6" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0004" x="701" y="0" width="353" height="469" frameX="-2" frameY="-6" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0005" x="701" y="0" width="353" height="469" frameX="-2" frameY="-6" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0006" x="1054" y="0" width="360" height="474" frameX="-2" frameY="-1" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0007" x="1054" y="0" width="360" height="474" frameX="-2" frameY="-1" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0008" x="1414" y="0" width="361" height="475" frameX="-2" frameY="0" frameWidth="363" frameHeight="475"/>
+	<SubTexture name="p Idle Dance0009" x="1414" y="0" width="361" height="475" frameX="-2" frameY="0" frameWidth="363" frameHeight="475"/>
+</TextureAtlas>

@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				175,
+				180
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "neibour idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				271,
+				183
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "neibour up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				52,
+				-187
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "neibour down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				200,
+				171
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "neibour left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				162,
+				172
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "neibour right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/neighbour fnf indie crosss",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "neibour",
+	"flip_x": false,
+	"healthbar_colors": [
+		226,
+		173,
+		55
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

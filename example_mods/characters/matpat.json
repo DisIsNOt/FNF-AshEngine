@@ -1,0 +1,67 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				180,
+				-261
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "matpat idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				334,
+				-256
+			],
+			"anim": "gamethoery",
+			"fps": 24,
+			"name": "matpat gamethoery",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				554,
+				2
+			],
+			"anim": "aaaaaaaaa",
+			"fps": 24,
+			"name": "matpat scare",
+			"indices": []
+		},
+		{
+			"offsets": [
+				176,
+				-261
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "whatthefuck",
+			"indices": [],
+			"name": "what the fuck"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "matpat",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "mom",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		85,
+		142
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 2.1
+}

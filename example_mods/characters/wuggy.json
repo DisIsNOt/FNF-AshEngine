@@ -1,0 +1,133 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				665,
+				438
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				391,
+				-360
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				130,
+				-23
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				120,
+				-50
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				60,
+				-140
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				138,
+				-59
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "keepWalking",
+			"indices": [],
+			"name": "keep walking"
+		},
+		{
+			"offsets": [
+				120,
+				-229
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "scared",
+			"indices": [],
+			"name": "scared"
+		},
+		{
+			"offsets": [
+				119,
+				-200
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "scared2",
+			"indices": [],
+			"name": "pointyy"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				110,
+				10
+			],
+			"anim": "scared3",
+			"fps": 24,
+			"name": "scream ",
+			"indices": []
+		},
+		{
+			"offsets": [
+				120,
+				-90
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "scaredFinish",
+			"loop": false,
+			"name": "screamFinishLmao"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "huggyWuggy",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		85,
+		142
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1.7
+}

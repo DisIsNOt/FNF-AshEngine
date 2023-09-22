@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="neighbour fnf indie crosss.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="neibour down0000" x="2295" y="0" width="246" height="191"/>
+	<SubTexture name="neibour down0001" x="2295" y="0" width="246" height="191"/>
+	<SubTexture name="neibour down0002" x="2295" y="0" width="246" height="191"/>
+	<SubTexture name="neibour down0003" x="2295" y="0" width="246" height="191"/>
+	<SubTexture name="neibour idle0000" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0001" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0002" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0003" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0004" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0005" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0006" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0007" x="1443" y="564" width="442" height="571" frameX="-7" frameY="0" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0008" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0009" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0010" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0011" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0012" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0013" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour idle0014" x="1833" y="0" width="461" height="535" frameX="0" frameY="-36" frameWidth="462" frameHeight="545"/>
+	<SubTexture name="neibour left0000" x="2274" y="535" width="384" height="557" frameX="0" frameY="-7" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0001" x="2274" y="535" width="384" height="557" frameX="0" frameY="-7" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0002" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0003" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0004" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0005" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0006" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0007" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0008" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0009" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0010" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0011" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0012" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour left0013" x="1886" y="535" width="387" height="562" frameX="-13" frameY="0" frameWidth="401" frameHeight="564"/>
+	<SubTexture name="neibour right0000" x="0" y="579" width="860" height="557" frameX="-5" frameY="-5" frameWidth="1253" frameHeight="579"/>
+	<SubTexture name="neibour right0001" x="0" y="579" width="860" height="557" frameX="-5" frameY="-5" frameWidth="1253" frameHeight="579"/>
+	<SubTexture name="neibour right0002" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0003" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0004" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0005" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0006" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0007" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0008" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0009" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0010" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0011" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0012" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour right0013" x="0" y="0" width="1253" height="579"/>
+	<SubTexture name="neibour up0000" x="1253" y="0" width="580" height="564" frameX="0" frameY="-9" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0001" x="1253" y="0" width="580" height="564" frameX="0" frameY="-9" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0002" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0003" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0004" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0005" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0006" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0007" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0008" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0009" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0010" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0011" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0012" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+	<SubTexture name="neibour up0013" x="860" y="579" width="583" height="573" frameX="-6" frameY="0" frameWidth="589" frameHeight="573"/>
+</TextureAtlas>

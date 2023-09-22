@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ASHex.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ASH Sing Note DOWN0000" x="0" y="0" width="431" height="607" frameX="-26" frameY="0" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0001" x="0" y="0" width="431" height="607" frameX="-26" frameY="0" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0002" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0003" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0004" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0005" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0006" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0007" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0008" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0009" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0010" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0011" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0012" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0013" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0014" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note DOWN0015" x="431" y="0" width="462" height="600" frameX="0" frameY="-8" frameWidth="462" frameHeight="608"/>
+	<SubTexture name="ASH Sing Note LEFT0000" x="893" y="0" width="301" height="666" frameX="-4" frameY="-4" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0001" x="893" y="0" width="301" height="666" frameX="-4" frameY="-4" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0002" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0003" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0004" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0005" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0006" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0007" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0008" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0009" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0010" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0011" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0012" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0013" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0014" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0015" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0016" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0017" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note LEFT0018" x="1194" y="0" width="303" height="670" frameX="0" frameY="0" frameWidth="305" frameHeight="670"/>
+	<SubTexture name="ASH Sing Note RIGHT0000" x="1497" y="0" width="493" height="630" frameX="0" frameY="-7" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0001" x="1497" y="0" width="493" height="630" frameX="0" frameY="-7" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0002" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0003" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0004" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0005" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0006" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0007" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0008" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0009" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0010" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0011" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0012" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0013" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0014" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note RIGHT0015" x="1990" y="0" width="517" height="644" frameX="-5" frameY="0" frameWidth="522" frameHeight="644"/>
+	<SubTexture name="ASH Sing Note UP0000" x="2507" y="0" width="724" height="773" frameX="-20" frameY="-18" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0001" x="2507" y="0" width="724" height="773" frameX="-20" frameY="-18" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0002" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0003" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0004" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0005" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0006" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0007" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0008" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0009" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0010" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0011" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0012" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0013" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0014" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0015" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0016" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0017" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0018" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0019" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0020" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0021" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0022" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0023" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0024" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0025" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0026" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0027" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0028" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0029" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0030" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0031" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0032" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0033" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0034" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0035" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0036" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0037" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0038" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0039" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0040" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0041" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0042" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0043" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0044" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0045" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0046" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0047" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0048" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0049" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0050" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0051" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0052" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0053" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0054" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0055" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0056" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0057" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0058" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH Sing Note UP0059" x="3231" y="0" width="742" height="790" frameX="0" frameY="0" frameWidth="744" frameHeight="791"/>
+	<SubTexture name="ASH idle dance0000" x="0" y="790" width="523" height="673" frameX="-22" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0001" x="523" y="790" width="544" height="676" frameX="-22" frameY="-8" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0002" x="1067" y="790" width="563" height="682" frameX="-20" frameY="-2" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0003" x="1630" y="790" width="568" height="684" frameX="-15" frameY="0" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0004" x="2198" y="790" width="575" height="684" frameX="-7" frameY="0" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0005" x="2773" y="790" width="578" height="684" frameX="-2" frameY="0" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0006" x="3351" y="790" width="574" height="683" frameX="-1" frameY="-1" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0007" x="0" y="1474" width="569" height="682" frameX="0" frameY="-2" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0008" x="569" y="1474" width="559" height="679" frameX="-2" frameY="-5" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0009" x="1128" y="1474" width="549" height="677" frameX="-5" frameY="-7" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0010" x="1677" y="1474" width="538" height="674" frameX="-11" frameY="-10" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0011" x="2215" y="1474" width="526" height="673" frameX="-20" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0012" x="2741" y="1474" width="523" height="673" frameX="-22" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0013" x="3264" y="1474" width="523" height="673" frameX="-22" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0014" x="0" y="2156" width="543" height="673" frameX="-23" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0015" x="543" y="2156" width="558" height="673" frameX="-25" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0016" x="1101" y="2156" width="557" height="673" frameX="-26" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0017" x="1658" y="2156" width="551" height="673" frameX="-31" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0018" x="2209" y="2156" width="541" height="673" frameX="-39" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0019" x="2750" y="2156" width="535" height="673" frameX="-41" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0020" x="3285" y="2156" width="530" height="673" frameX="-40" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0021" x="0" y="2829" width="522" height="673" frameX="-40" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0022" x="522" y="2829" width="516" height="673" frameX="-39" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0023" x="1038" y="2829" width="514" height="673" frameX="-35" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0024" x="1552" y="2829" width="516" height="673" frameX="-30" frameY="-11" frameWidth="583" frameHeight="684"/>
+	<SubTexture name="ASH idle dance0025" x="2068" y="2829" width="518" height="673" frameX="-27" frameY="-11" frameWidth="583" frameHeight="684"/>
+</TextureAtlas>

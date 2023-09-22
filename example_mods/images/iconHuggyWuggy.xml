@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="iconHuggyWuggy.png">
+	<!-- Created with Adobe Animate version 22.0.5.191 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="lose0000" x="0" y="0" width="151" height="123"/>
+	<SubTexture name="neutral0000" x="151" y="0" width="173" height="100"/>
+	<SubTexture name="neutral0001" x="151" y="0" width="173" height="100"/>
+</TextureAtlas>
