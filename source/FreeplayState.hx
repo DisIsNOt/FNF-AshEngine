@@ -384,10 +384,10 @@ class FreeplayState extends MusicBeatState
 			   var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 
 
-			    FlxG.sound.play(Paths.sound('confirmMenu'));
+			    FlxG.sound.play(Paths.sound('confirmMenu')); 
 			
 
-		    	    PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+		    	PlayState.SONG = Song.loadFromJson(poop, songLowercase);
 			    PlayState.isStoryMode = false;
 			    PlayState.storyDifficulty = curDifficulty;
 
