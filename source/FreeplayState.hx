@@ -137,9 +137,6 @@ class FreeplayState extends MusicBeatState
 			iconArray.push(icon);
 			add(icon);
 
-			// songText.x += 40;
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
 		}
 		WeekData.setDirectoryFromWeek();
 
@@ -347,7 +344,7 @@ class FreeplayState extends MusicBeatState
 		else if(instPlaying != curSelected)
 		{
 			try {
-				trace('NO ERROR FOUND');
+				//trace('NO ERROR FOUND');
 				Paths.clearUnusedMemory();
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
@@ -365,7 +362,7 @@ class FreeplayState extends MusicBeatState
 				vocals.volume = 0.7;
 				instPlaying = curSelected;
 			} catch(e:Dynamic) {
-				trace('ERROR');
+				//trace('ERROR');
 				msg = e.toString();
 				if(msg.startsWith('[file_contents,assets/data/')) msg = msg.substring(27, msg.length-1); 
 				crashHandlerText.text = 'Current Song Chart Fail To Found: $msg';

@@ -3108,15 +3108,9 @@ class PlayState extends MusicBeatState
 			percent = 100;
 		}
 
-
-		
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset;
-		
 
-
-		//iconP1.alpha = 0.5;
-		//iconP2.alpha = 0.5;
 
 		if (FlxG.keys.pressed.ONE)
 		{
