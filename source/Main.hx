@@ -126,6 +126,8 @@ class Main extends Sprite
 			});
 		}
 		#end
+
+		cppthing.CppAPI.darkMode();
 	}
 
 	var isFocused:Bool = true;
