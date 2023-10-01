@@ -221,6 +221,11 @@ class PlayState extends MusicBeatState
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
+	public var healthDrain:Bool = false;
+	public var drainAmt:Float = 0.039;
+	public var sustainNoteDrainAmt:Float = 0.025;
+	public var cannotLowerThan:Float = 0.25;
+	public var sustainNoteHeal:Bool = true;
 
 	public var botplaySine:Float = 0;
 	public var botplayTxt:FlxText;
@@ -431,6 +436,14 @@ class PlayState extends MusicBeatState
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill', false);
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
+
+		healthDrain = ClientPrefs.getGameplaySetting('healthDrain', false);
+		drainAmt = ClientPrefs.getGameplaySetting('drainAmount', 0.039);
+		sustainNoteDrainAmt = ClientPrefs.getGameplaySetting('sustainDrainAmt', 0.025);
+		cannotLowerThan = ClientPrefs.getGameplaySetting('cannotLowerThan', 0.25);
+		sustainNoteHeal = ClientPrefs.getGameplaySetting('sustainHeal', true);
+
+		//
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -1095,17 +1108,17 @@ class PlayState extends MusicBeatState
 			}
 		}
 		#end
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		var daSong:String = Paths.formatToSongPath(curSong); //daSong create
 		var customUhhhThing:Bool = true;
 		var main:Bool = true;
-		if(daSong != 'hello-huggy') {
-			Variables.healthDrain = true;
-		}
+
 		if (customUhhhThing == true && main == true) //do some custom shit here
 		{
 			switch(daSong) //song
 			{
+				case 'tutorial':
+					healthDrain = false;
 				case 'intertwined':
 			
 					timeTxt.text = 'Intertwined';
@@ -4622,23 +4635,18 @@ class PlayState extends MusicBeatState
 
 	function opponentNoteHit(note:Note):Void  //oppo
 	{
-		if (Variables.healthDrain == true && health > Variables.cannotLowerThan && !note.isSustainNote) 
-		{
-			health = health - Variables.drainAmount; 
- 
+
+		if (healthDrain && health > cannotLowerThan && !note.isSustainNote && sustainNoteHeal) {
+			health -= drainAmt;
+		} else if (healthDrain && health > cannotLowerThan && note.isSustainNote && sustainNoteHeal) {
+			health -= sustainNoteDrainAmt;
 		}
 
-		
-		if (Variables.healthDrain == true && health > Variables.cannotLowerThan && note.isSustainNote)
-		{
-			health = health - Variables.sustainDrainAmount;
- 
+	    if (healthDrain && health > cannotLowerThan && !sustainNoteHeal && !note.isSustainNote) {
+			health -= drainAmt;
 		}
-
 
 		//trace(Math.abs(note.noteData));
-
-
 		var daSong:String = Paths.formatToSongPath(curSong);
 		var hitNote:Float = Math.abs(note.noteData);
 
@@ -4668,8 +4676,6 @@ class PlayState extends MusicBeatState
 
 
 		}
-
-
 		/*
 		var daSong:String = Paths.formatToSongPath(curSong);
 		switch (daSong) {
@@ -4680,7 +4686,6 @@ class PlayState extends MusicBeatState
 				}
 		}
 		*/
-
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
 			camZooming = true;
 
@@ -4781,10 +4786,9 @@ class PlayState extends MusicBeatState
 				return;
 			}
 
-			if (Variables.sustainNoteHeal == true)
+			if (sustainNoteHeal == true)
 			{
-				if (!note.isSustainNote)
-				{
+				if (!note.isSustainNote) {
 					combo += 1;
 					if (combo > 9999) combo = 9999;
 					popUpScore(note);
@@ -4799,15 +4803,13 @@ class PlayState extends MusicBeatState
 	 
 			}
 
-			if (Variables.sustainNoteHeal == false)
+			if (sustainNoteHeal == false)
 			{
-				if (!note.isSustainNote && Variables.sustainNoteHeal == false)
-				{
+				if (!note.isSustainNote && sustainNoteHeal == false) {
 					combo += 1;
 					if(combo > 9999) combo = 9999;
 					popUpScore(note);
 					health += note.hitHealth * healthGain;
-  
 			   }
 			}
 
@@ -5129,7 +5131,7 @@ class PlayState extends MusicBeatState
 					case 2:
 						canPause = false;
 						FlxTween.tween(daHouseLmao, {alpha: 1}, 2, {ease: FlxEase.linear});
-						Variables.healthDrain = false;
+						healthDrain = false;
 					case 25:
 						FlxTween.tween(camFollow, {y: 650}, 3, {ease: FlxEase.cubeInOut}); //coolass intro
 						FlxTween.tween(camGame, {zoom: 0.45}, 4, {ease: FlxEase.cubeInOut,  onComplete: function(twn:FlxTween){
@@ -5173,19 +5175,19 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(iconWuggy, {alpha: 1}, 1);
 					
 						defaultCamZoom = 1;
-						Variables.healthDrain = true;
-						Variables.drainAmount = 0.050;
-						Variables.cannotLowerThan = 0.089;
+						healthDrain = true;
+						drainAmt = 0.050;
+						cannotLowerThan = 0.089;
 					case 512:
 						FlxTween.tween(camGame, {zoom: 1}, 2, {ease: FlxEase.cubeInOut});
 						defaultCamZoom = 1;
 					case 760:
-						Variables.healthDrain = false;
+						healthDrain = false;
 						FlxTween.tween(camGame, {zoom: 0.45}, 0.5, {ease: FlxEase.cubeInOut});
 						defaultCamZoom = 0.45;
 						health = 2;
 					case 823:
-						Variables.healthDrain = true;
+						healthDrain = true;
 						FlxTween.tween(camGame, {zoom: 1}, 2, {ease: FlxEase.cubeInOut});
 					case 835:
 						defaultCamZoom = 1;

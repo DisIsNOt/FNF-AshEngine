@@ -13,6 +13,7 @@ using StringTools;
 class DiscordClient
 {
 	public static var isInitialized:Bool = false;
+   public var username:String = Sys.environment().get("USERNAME");
 	public function new()
 	{
 		trace("AshEngine finalizing...");
@@ -23,7 +24,7 @@ class DiscordClient
 			onDisconnected: onDisconnected
 		});
 		trace("AshEngine complied.");
-		trace("Hello " + Variables.getUsername);
+		trace("Hello welcome to AshEngine " + username);
 		//trace("Json Datathing idk : " + Variables.jsonData);
 		
 

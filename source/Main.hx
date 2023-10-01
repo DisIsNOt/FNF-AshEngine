@@ -14,6 +14,7 @@ import lime.app.Application;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 
 #if desktop
 import Discord.DiscordClient;

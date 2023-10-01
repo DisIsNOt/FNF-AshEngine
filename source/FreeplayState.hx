@@ -231,7 +231,6 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
-		Variables.selectedSong = Paths.formatToSongPath(songs[curSelected].songName);
 		FlxG.mouse.visible = false;
 
 		//var selectedSongName:FlxText = new FlxText(0, 0, 0,"")
@@ -332,6 +331,7 @@ class FreeplayState extends MusicBeatState
 			}
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			Application.current.window.title = "Friday Night Funkin': AshEngine";
 			MusicBeatState.switchState(new MainMenuState());
 			
 		}
@@ -344,7 +344,7 @@ class FreeplayState extends MusicBeatState
 		else if(instPlaying != curSelected)
 		{
 			try {
-				//trace('NO ERROR FOUND');
+				Application.current.window.title = "Friday Night Funkin': AshEngine - Currently Playing: " + songs[curSelected].songName.toLowerCase();
 				Paths.clearUnusedMemory();
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
@@ -362,7 +362,6 @@ class FreeplayState extends MusicBeatState
 				vocals.volume = 0.7;
 				instPlaying = curSelected;
 			} catch(e:Dynamic) {
-				//trace('ERROR');
 				msg = e.toString();
 				if(msg.startsWith('[file_contents,assets/data/')) msg = msg.substring(27, msg.length-1); 
 				crashHandlerText.text = 'Current Song Chart Fail To Found: $msg';
