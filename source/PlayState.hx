@@ -2857,23 +2857,10 @@ class PlayState extends MusicBeatState
 	{
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
-	
-		//trace("current song: " + test.TestingMainState.lastSongThing);
-  
-		if (FlxG.keys.justPressed.P) {
-			trace("remove shader");
-			removeShader();
-		}
-		if (FlxG.keys.justPressed.O)   {
-			addBloom();
-			trace("added bloom");
 
+		if(!Main.isFocused) {
+			openPauseMenu();
 		}
-			//addBloom();
-		
-		///////////////////////////////////////////////////////////////////
-	
-
 		switch(daSong) //daSong update
 		{
 			//something over here
@@ -2881,28 +2868,21 @@ class PlayState extends MusicBeatState
 			case 'intertwined':
 				changeStrumNotes(false, 'ashNote');
 
-
-
-	
-			iconP2.visible = false;
-			ashIcon.x = iconP2.x;
-			ashIcon.y = iconP2.y;
-			ashIcon.cameras = [camHUD];
-			
-
-	
-	
-			if (health < 0.72) {
-				ashIcon.animation.play('winning');
-			} 
-			else if (health > 0.75) {
-				ashIcon.animation.play('neutral');
-			} 
-				
-			if (health > 1.33) {
-				ashIcon.animation.play('lossing');
-			}
-
+			    iconP2.visible = false;
+			    ashIcon.x = iconP2.x;
+			    ashIcon.y = iconP2.y;
+			    ashIcon.cameras = [camHUD];
+			    if (health < 0.72) {
+			    	ashIcon.animation.play('winning');
+			    } 
+			    else if (health > 0.75) {
+			    	ashIcon.animation.play('neutral');
+			    } 
+			    	
+			    if (health > 1.33) {
+			    	ashIcon.animation.play('lossing');
+			    }
+    
 			case 'hello-huggy':
 				if (smoking) {
 					if (dasmoke.animation.curAnim.curFrame == 17) {
@@ -3395,7 +3375,7 @@ class PlayState extends MusicBeatState
 		callOnLuas('onUpdatePost', [elapsed]);
 	}
 
-	function openPauseMenu()
+	public function openPauseMenu()
 	{
 		persistentUpdate = false;
 		persistentDraw = true;

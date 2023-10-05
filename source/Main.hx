@@ -43,7 +43,6 @@ class Main extends Sprite
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
-
 	public static var fpsVar:FPS;
 	public static var focusMusicTween:FlxTween;
 
@@ -131,7 +130,7 @@ class Main extends Sprite
 		cppthing.CppAPI.darkMode();
 	}
 
-	var isFocused:Bool = true;
+	public static var isFocused:Bool = true;
 	var focusInVolume:Float = 1.0;
 	var focusLostVolume:Float = 0.25;
 

@@ -112,6 +112,7 @@ class TitleState extends MusicBeatState
 		WeekData.loadTheFirstEnabledMod();
 
 		System.gc();
+		Application.current.window.title = "Friday Night Funkin': AshEngine";
 
 		//trace(path, FileSystem.exists(path));
 
