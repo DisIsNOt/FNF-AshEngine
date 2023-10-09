@@ -1,7 +1,7 @@
 package;
 
 import flixel.graphics.FlxGraphic;
-import flixel.FlxG;
+
 import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Assets;
@@ -11,13 +11,11 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
+import states.TitleState;
 import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.util.FlxTimer;
-import lime.app.Application;
 
-#if desktop
-import Discord.DiscordClient;
+#if linux
+import lime.graphics.Image;
 #end
 
 //crash handler stuff
@@ -30,21 +28,26 @@ import sys.io.File;
 import sys.io.Process;
 #end
 
-using StringTools;
+#if linux
+@:cppInclude('./external/gamemode_client.h')
+@:cppFileCode('
+	#define GAMEMODE_AUTO
+')
+#end
 
 class Main extends Sprite
 {
 	var game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: TitleState, // initial game state default: TitleState
+		initialState: TitleState, // initial game state
 		zoom: -1.0, // game state bounds
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
+
 	public static var fpsVar:FPS;
-	public static var focusMusicTween:FlxTween;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -91,7 +94,10 @@ class Main extends Sprite
 			game.height = Math.ceil(stageHeight / game.zoom);
 		}
 	
+		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
+		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
+		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
 		#if !mobile
@@ -100,13 +106,13 @@ class Main extends Sprite
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		if(fpsVar != null) {
-			fpsVar.visible = ClientPrefs.showFPS;
+			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
+		#end
 
-		Application.current.window.onFocusOut.add(onFocusLost);
-		Application.current.window.onFocusIn.add(onFocusIn);
-		FlxG.autoPause = false;
-		FlxG.fixedTimestep = false;
+		#if linux
+		var icon = Image.fromFile("icon.png");
+		Lib.current.stage.window.setIcon(icon);
 		#end
 
 		#if html5
@@ -119,20 +125,37 @@ class Main extends Sprite
 		#end
 
 		#if desktop
-		if (!DiscordClient.isInitialized) {
-			DiscordClient.initialize();
-			Application.current.window.onClose.add(function() {
-				DiscordClient.shutdown();
-			});
-		}
+		DiscordClient.start();
 		#end
 
-		cppthing.CppAPI.darkMode();
+		// shader coords fix
+		FlxG.signals.gameResized.add(function (w, h) {
+		     if (FlxG.cameras != null) {
+			   for (cam in FlxG.cameras.list) {
+				@:privateAccess
+				if (cam != null && filters != null)
+					resetSpriteCache(cam.flashSprite);
+			   }
+		     }
+
+		     if (FlxG.game != null)
+			 resetSpriteCache(FlxG.game);
+		});
+
+		FlxG.fixedTimestep = false;
+		Application.current.window.onFocusIn.add(onFocus);
+		Application.current.window.onFocusOut.add(onFocusOut);
+		hx.CppAPI.darkMode();
+		trace(Date.now().toString());
+		FlxG.autoPause = false;
 	}
 
-	public static var isFocused:Bool = true;
-	var focusInVolume:Float = 1.0;
-	var focusLostVolume:Float = 0.25;
+	static function resetSpriteCache(sprite:Sprite):Void {
+		@:privateAccess {
+		        sprite.__cacheBitmap = null;
+			sprite.__cacheBitmapData = null;
+		}
+	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
@@ -176,51 +199,44 @@ class Main extends Sprite
 	}
 	#end
 
-	function onFocusLost() {
-		isFocused = false;
-		// Lower global volume when unfocused
-		if (Type.getClass(FlxG.state) != PlayState) // imagine stealing my code smh
-		{
-			focusInVolume = FlxG.sound.volume;
-			if (focusInVolume > 0.3) {
-				focusLostVolume = 0.3;
-			} else {
-				if (focusInVolume > 0.1) {
-					focusLostVolume = 0.1;
-				} else {
-					focusLostVolume = 0;
-				}
+	public static var volTween:FlxTween;
+	public static var isFocused = true;
+	public var focusVolume:Float = 1;
+	public var focusOutVolume:Float = 0.09;
+	var dur:Float = 0.6;
+
+	function onFocus() {
+		new FlxTimer().start(0.2, function(b:FlxTimer){
+			isFocused = true;
+		});
+		if (Type.getClass(FlxG.state) != PlayState) {
+			if(volTween != null) {
+				volTween.cancel();
 			}
-
-			//trace("Game unfocused");
-
-			if (focusMusicTween != null)
-				focusMusicTween.cancel();
-			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: focusLostVolume}, 0.5);
-
-			// Conserve power by lowering draw framerate when unfocuced
-			FlxG.drawFramerate = 60;
+			volTween = FlxTween.tween(FlxG.sound, {volume: focusVolume}, dur);
 		}
+		FlxG.drawFramerate = 60;
+		
 	}
 
-	function onFocusIn() {
-		new FlxTimer().start(0.2, function(tmr:FlxTimer) {
-				isFocused = true;
-			});
-	
-			// Lower global volume when unfocused
-			if (Type.getClass(FlxG.state) != PlayState) {
-				//trace("Game focused");
-	
-				// Normal global volume when focused
-				if (focusMusicTween != null)
-					focusMusicTween.cancel();
-	
-				focusMusicTween = FlxTween.tween(FlxG.sound, {volume: focusInVolume}, 0.5);
-	
-				// Bring framerate back when focused
-				FlxG.drawFramerate = 70;
+	function onFocusOut() {
+		isFocused = false;
+		if (Type.getClass(FlxG.state) != PlayState) {
+			focusVolume = FlxG.sound.volume;
+			if (focusVolume > 0.3) {
+				focusOutVolume = 0.3;
+			} else {
+				if (focusVolume > 0.1) {
+					focusOutVolume = 0.1;
+				} else {
+					focusOutVolume = 0;
+				}
 			}
-
+		}
+		if (volTween != null) {
+			volTween.cancel();
+			volTween = FlxTween.tween(FlxG.sound, {volume: focusOutVolume}, dur);
+		}
+		FlxG.drawFramerate = 40;
 	}
 }
