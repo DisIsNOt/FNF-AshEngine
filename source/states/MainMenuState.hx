@@ -17,8 +17,12 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.7.1B'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
-	var musicPlayer:FlxButton;	
+	var soundTest:FlxButton;	
 	var canPress:Bool = true;
+	var canSelect:Bool = true;
+
+	var shit2:FlxText;
+	var shit3:FlxText;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
@@ -79,8 +83,8 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 
-		musicPlayer = new FlxButton(100, 0, "Sound Tester", musicButtonClicked);
-		add(musicPlayer);
+		soundTest = new FlxButton(100, 0, "Sound Tester", musicButtonClicked);
+		add(soundTest);
 		
 		// magenta.scrollFactor.set();
 
@@ -117,12 +121,22 @@ class MainMenuState extends MusicBeatState
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "AshEngine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+		shit2 = new FlxText(985, FlxG.height - 24,  0, "Press CTRL to switch control type", 12);
+		shit2.scrollFactor.set();
+		shit2.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(shit2);
+		shit3 = new FlxText(1002, FlxG.height - 44, 0, "Current Control Type: " + ClientPrefs.data.menuControlType, 12);
+		shit3.scrollFactor.set();
+		shit3.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(shit3);
+
+
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -139,7 +153,8 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
-
+	var e:Int = 0;
+	var sel:Int = 0;
 	override function update(elapsed:Float)
 	{
 		if (FlxG.sound.music.volume < 0.8)
@@ -149,10 +164,101 @@ class MainMenuState extends MusicBeatState
 		}
 		FlxG.camera.followLerp = FlxMath.bound(elapsed * 9 / (FlxG.updateFramerate / 60), 0, 1);
 
-		if (!selectedSomethin)
+		if(FlxG.keys.justPressed.CONTROL) {
+			sel++;
+
+			if(sel == 1) {
+				FlxG.mouse.enabled = true;
+				ClientPrefs.data.menuControlType = 'keyboard';
+				shit3.text = "Current Control Type: " + ClientPrefs.data.menuControlType;
+			}
+			if (sel > 1) {
+				FlxG.mouse.enabled = false;
+				ClientPrefs.data.menuControlType = 'mouse';
+				shit3.text = "Current Control Type: " + ClientPrefs.data.menuControlType;
+				sel = 0;
+			}
+
+			menuItems.forEach(function(spr:FlxSprite){
+				if (spr.ID == curSelected) {
+					spr.animation.play('selected');
+					var addB:Float = 0;
+					if(menuItems.length > 4) {
+						addB = menuItems.length * 8;
+					}
+					camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - addB);
+					spr.centerOffsets();
+				}
+			}); 
+		}
+
+
+		menuItems.forEach(function(spr:FlxSprite) {
+			if(FlxG.mouse.overlaps(spr) && ClientPrefs.data.menuControlType == 'mouse') {
+				curSelected = spr.ID;
+				
+				if(spr.ID == curSelected) {
+					spr.animation.play('selected');
+					var add:Float = 0;
+					if(menuItems.length > 4) {
+						add = menuItems.length * 8;
+					}
+					camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
+					spr.centerOffsets();
+				} 
+				if(e != curSelected) {
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					e = curSelected;
+				}
+
+				if(FlxG.mouse.justPressed) {
+					canPress = false;
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+
+					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(f:FlxFlicker){
+						var choice:String = optionShit[curSelected];
+
+						switch(choice) {
+							case 'story_mode':
+								MusicBeatState.switchState(new StoryMenuState());
+							case 'freeplay':
+								MusicBeatState.switchState(new FreeplayState());
+							case 'mods':
+								MusicBeatState.switchState(new ModsMenuState());
+							case 'awards':
+								MusicBeatState.switchState(new AchievementsMenuState());
+							case 'credits':
+								MusicBeatState.switchState(new CreditsState());
+							case 'options':
+								LoadingState.loadAndSwitchState(new OptionsState());
+								OptionsState.onPlayState = false;
+								if (PlayState.SONG != null)
+								{
+									PlayState.SONG.arrowSkin = null;
+									PlayState.SONG.splashSkin = null;
+								}
+						}
+					});
+
+				}
+			} else {
+				if(ClientPrefs.data.menuControlType == 'mouse') {
+					spr.animation.play('idle');
+					spr.centerOffsets();
+				}
+			}
+
+		});
+		
+		if (controls.BACK)
 		{
-			if (controls.UI_UP_P)
-			{
+			selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			MusicBeatState.switchState(new TitleState());
+		}
+		if (!selectedSomethin && ClientPrefs.data.menuControlType == 'keyboard')
+		{
+			if (controls.UI_UP_P) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
@@ -163,40 +269,27 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.BACK)
-			{
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new TitleState());
-			}
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
+				canPress = false;
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				if(ClientPrefs.data.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+				menuItems.forEach(function(spr:FlxSprite)
 				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-				}
-				else
-				{
-					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					if(ClientPrefs.data.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
-					menuItems.forEach(function(spr:FlxSprite)
+					if (curSelected != spr.ID)
 					{
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else
-						{
+						FlxTween.tween(spr, {alpha: 0}, 0.4, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
+							{
+								spr.kill();
+							}
+						});
+					}
+					else
+					{
 							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 							{
 								var daChoice:String = optionShit[curSelected];
@@ -236,7 +329,7 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
 			#end
-		}
+		
 
 		super.update(elapsed);
 
@@ -276,7 +369,7 @@ class MainMenuState extends MusicBeatState
 	function musicButtonClicked() {
 		if(canPress) {
 			MusicBeatState.switchState(new states.MusicState());
-			FlxFlicker.flicker(musicPlayer, 1, 0.06);
+			FlxFlicker.flicker(soundTest, 1, 0.06);
 			FlxG.sound.play(Paths.sound("confirmMenu"));
 		}
 

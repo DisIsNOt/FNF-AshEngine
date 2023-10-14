@@ -142,6 +142,8 @@ class Main extends Sprite
 			 resetSpriteCache(FlxG.game);
 		});
 
+		FlxG.mouse.visible = true;
+		FlxG.mouse.useSystemCursor = true;
 		FlxG.fixedTimestep = false;
 		Application.current.window.onFocusIn.add(onFocus);
 		Application.current.window.onFocusOut.add(onFocusOut);
