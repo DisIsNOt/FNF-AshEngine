@@ -8,6 +8,7 @@ import flixel.effects.FlxFlicker;
 
 import flixel.input.keyboard.FlxKey;
 import lime.app.Application;
+import flixel.util.FlxSave;
 
 import states.editors.MasterEditorMenu;
 import options.OptionsState;
@@ -20,6 +21,9 @@ class MainMenuState extends MusicBeatState
 	var soundTest:FlxButton;	
 	var canPress:Bool = true;
 	var canSelect:Bool = true;
+
+	var menuControlType:String = 'mouse';
+
 
 	var shit2:FlxText;
 	var shit3:FlxText;
@@ -42,6 +46,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		loadShit();
+		saveShit();
 		Application.current.window.title = "Friday Night Funkin': AshEngine";
 		#if MODS_ALLOWED
 		Mods.pushGlobalMods();
@@ -92,9 +98,6 @@ class MainMenuState extends MusicBeatState
 		add(menuItems);
 
 		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (i in 0...optionShit.length)
 		{
@@ -121,17 +124,17 @@ class MainMenuState extends MusicBeatState
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "AshEngine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(Paths.font('cronos.otf'), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(Paths.font('cronos.otf'), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		shit2 = new FlxText(985, FlxG.height - 24,  0, "Press CTRL to switch control type", 12);
 		shit2.scrollFactor.set();
 		shit2.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(shit2);
-		shit3 = new FlxText(1002, FlxG.height - 44, 0, "Current Control Type: " + ClientPrefs.data.menuControlType, 12);
+		shit3 = new FlxText(1002, FlxG.height - 44, 0, "Current Control Type: " + menuControlType, 12);
 		shit3.scrollFactor.set();
 		shit3.setFormat(Paths.font('cronos.otf'), 22, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(shit3);
@@ -168,14 +171,18 @@ class MainMenuState extends MusicBeatState
 			sel++;
 
 			if(sel == 1) {
-				FlxG.mouse.enabled = true;
-				ClientPrefs.data.menuControlType = 'keyboard';
-				shit3.text = "Current Control Type: " + ClientPrefs.data.menuControlType;
+				FlxG.mouse.enabled = false;
+				FlxG.mouse.visible = false;
+				menuControlType = 'keyboard';
+				saveShit();
+				shit3.text = "Current Control Type: " + menuControlType;
 			}
 			if (sel > 1) {
-				FlxG.mouse.enabled = false;
-				ClientPrefs.data.menuControlType = 'mouse';
-				shit3.text = "Current Control Type: " + ClientPrefs.data.menuControlType;
+				FlxG.mouse.enabled = true;
+				FlxG.mouse.visible = true;
+				menuControlType = 'mouse';
+				saveShit();
+				shit3.text = "Current Control Type: " + menuControlType;
 				sel = 0;
 			}
 
@@ -194,7 +201,7 @@ class MainMenuState extends MusicBeatState
 
 
 		menuItems.forEach(function(spr:FlxSprite) {
-			if(FlxG.mouse.overlaps(spr) && ClientPrefs.data.menuControlType == 'mouse') {
+			if(FlxG.mouse.overlaps(spr) && menuControlType == 'mouse' && canSelect) {
 				curSelected = spr.ID;
 				
 				if(spr.ID == curSelected) {
@@ -211,8 +218,9 @@ class MainMenuState extends MusicBeatState
 					e = curSelected;
 				}
 
-				if(FlxG.mouse.justPressed) {
+				if(FlxG.mouse.justPressed && canPress) {
 					canPress = false;
+					canSelect = false;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
 					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(f:FlxFlicker){
@@ -242,7 +250,7 @@ class MainMenuState extends MusicBeatState
 
 				}
 			} else {
-				if(ClientPrefs.data.menuControlType == 'mouse') {
+				if(menuControlType == 'mouse') {
 					spr.animation.play('idle');
 					spr.centerOffsets();
 				}
@@ -256,7 +264,7 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new TitleState());
 		}
-		if (!selectedSomethin && ClientPrefs.data.menuControlType == 'keyboard')
+		if (!selectedSomethin && menuControlType == 'keyboard')
 		{
 			if (controls.UI_UP_P) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -372,6 +380,26 @@ class MainMenuState extends MusicBeatState
 			FlxFlicker.flicker(soundTest, 1, 0.06);
 			FlxG.sound.play(Paths.sound("confirmMenu"));
 		}
+	}
+
+	function saveShit() {
+		FlxG.save.data.menuControlType = menuControlType;
+
+		FlxG.save.flush();
+
+		var save:FlxSave = new FlxSave();
+		save.bind('AshEngine_others', 'AshEngine');
+		save.data.others = 3; //idk this doens't do anything
+		save.flush();
+	}
+
+	function loadShit() {
+		if(FlxG.save.data.menuControlType != null) {
+			menuControlType = FlxG.save.data.menuControlType;
+		}
+
+		var save:FlxSave = new FlxSave();
+		save.bind('AshEngine_others', 'AshEngine');
 
 	}
 }

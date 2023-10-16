@@ -1,5 +1,6 @@
 package substates;
 
+import flixel.util.FlxSave;
 import backend.WeekData;
 import backend.Highscore;
 import backend.Song;
@@ -21,6 +22,7 @@ class PauseSubState extends MusicBeatSubstate
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
+
 	var pauseMusic:FlxSound;
 	var practiceText:FlxText;
 	var skipTimeText:FlxText;
@@ -34,7 +36,9 @@ class PauseSubState extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float)
 	{
+
 		super();
+
 		if(Difficulty.list.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
 		if(PlayState.chartingMode)
@@ -387,7 +391,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		for (i in 0...menuItems.length) {
-			var item = new Alphabet(90, 320, menuItems[i], true);
+			var item = new Alphabet(90, 320, menuItems[i], false);
 			item.isMenuItem = true;
 			item.targetY = i;
 			grpMenuShit.add(item);
@@ -422,4 +426,6 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		skipTimeText.text = FlxStringUtil.formatTime(Math.max(0, Math.floor(curTime / 1000)), false) + ' / ' + FlxStringUtil.formatTime(Math.max(0, Math.floor(FlxG.sound.music.length / 1000)), false);
 	}
+
+
 }

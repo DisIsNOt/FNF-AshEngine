@@ -10,6 +10,7 @@ import lime.utils.Assets;
 import lime.app.Application;
 import openfl.utils.Assets as OpenFlAssets;
 import flixel.util.FlxTimer;
+import flixel.effects.FlxFlicker;
 
 import objects.HealthIcon;
 import states.editors.ChartingState;
@@ -53,6 +54,7 @@ class FreeplayState extends MusicBeatState
 	private var crashHandlerBg:FlxSprite;
 	private var foundError:Bool = false;
 	var msg:String;
+
 
 
 	override function create() {
@@ -223,6 +225,8 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
+		grpSongs.ID = curSelected;
+
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -315,6 +319,7 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			destroyFreeplayVocals();
 			MusicBeatState.switchState(new MainMenuState());
 		}
 
@@ -333,7 +338,7 @@ class FreeplayState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 				vocals = new FlxSound();
 				FlxG.sound.list.add(vocals);
-				timer.start(0.55, function(tmr:FlxTimer){
+				timer.start(0.75, function(tmr:FlxTimer){
 					FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.5);
 				});
 				vocals.play();
@@ -353,6 +358,21 @@ class FreeplayState extends MusicBeatState
 		}
 		else if (controls.ACCEPT && !foundError)
 		{
+			grpSongs.forEach(function(spr:FlxSprite) {
+				FlxFlicker.flicker(spr, 1, 0.06, false, false);
+				if(curSelected != spr.ID) {
+					FlxTween.tween(spr, {alpha: 0}, 0.4, {
+						ease: FlxEase.quadOut,
+						onComplete: function(twn:FlxTween)
+						{
+							spr.kill();
+						}
+					});
+				} 
+				if(curSelected == spr.ID) {
+					FlxFlicker.flicker(spr, 1, 0.05, false ,false);
+				}
+			});
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
