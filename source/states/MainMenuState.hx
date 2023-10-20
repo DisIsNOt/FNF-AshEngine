@@ -121,6 +121,7 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollow, null, 0);
+		FlxG.mouse.visible = true;
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "AshEngine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -170,22 +171,6 @@ class MainMenuState extends MusicBeatState
 		if(FlxG.keys.justPressed.CONTROL) {
 			sel++;
 
-			if(sel == 1) {
-				FlxG.mouse.enabled = false;
-				FlxG.mouse.visible = false;
-				menuControlType = 'keyboard';
-				saveShit();
-				shit3.text = "Current Control Type: " + menuControlType;
-			}
-			if (sel > 1) {
-				FlxG.mouse.enabled = true;
-				FlxG.mouse.visible = true;
-				menuControlType = 'mouse';
-				saveShit();
-				shit3.text = "Current Control Type: " + menuControlType;
-				sel = 0;
-			}
-
 			menuItems.forEach(function(spr:FlxSprite){
 				if (spr.ID == curSelected) {
 					spr.animation.play('selected');
@@ -199,6 +184,19 @@ class MainMenuState extends MusicBeatState
 			}); 
 		}
 
+		if(sel == 1) {
+			FlxG.mouse.enabled = false;
+			menuControlType = 'keyboard';
+			saveShit();
+			shit3.text = "Current Control Type: " + menuControlType;
+		}
+		if (sel > 1) {
+			FlxG.mouse.enabled = true;
+			menuControlType = 'mouse';
+			saveShit();
+			shit3.text = "Current Control Type: " + menuControlType;
+			sel = 0;
+		}
 
 		menuItems.forEach(function(spr:FlxSprite) {
 			if(FlxG.mouse.overlaps(spr) && menuControlType == 'mouse' && canSelect) {
@@ -384,6 +382,7 @@ class MainMenuState extends MusicBeatState
 
 	function saveShit() {
 		FlxG.save.data.menuControlType = menuControlType;
+		FlxG.save.data.sel = sel;
 
 		FlxG.save.flush();
 
@@ -396,6 +395,9 @@ class MainMenuState extends MusicBeatState
 	function loadShit() {
 		if(FlxG.save.data.menuControlType != null) {
 			menuControlType = FlxG.save.data.menuControlType;
+		}
+		if(FlxG.save.data.sel != null) {
+			sel = FlxG.save.data.sel;
 		}
 
 		var save:FlxSave = new FlxSave();
