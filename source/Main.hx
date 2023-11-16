@@ -149,6 +149,7 @@ class Main extends Sprite
 		Application.current.window.onFocusOut.add(onFocusOut);
 		hx.CppAPI.darkMode();
 		trace(Date.now().toString());
+		trace("Current sound volume : " + FlxG.sound.volume);
 		FlxG.autoPause = false;
 	}
 
@@ -203,42 +204,55 @@ class Main extends Sprite
 
 	public static var volTween:FlxTween;
 	public static var isFocused = true;
-	public var focusVolume:Float = 1;
-	public var focusOutVolume:Float = 0.09;
+	public var oldVol:Float = 1.0;
+	public var newVol:Float = 0.09;
 	var dur:Float = 0.6;
 
 	function onFocus() {
-		new FlxTimer().start(0.2, function(b:FlxTimer){
+		new FlxTimer().start(0.2, function(b:FlxTimer) {
 			isFocused = true;
 		});
+
 		if (Type.getClass(FlxG.state) != PlayState) {
-			if(volTween != null) {
+			trace("Game Focused");
+
+			if(volTween != null) 
 				volTween.cancel();
-			}
-			volTween = FlxTween.tween(FlxG.sound, {volume: focusVolume}, dur);
+
+			volTween = FlxTween.tween(FlxG.sound, {volume: oldVol}, dur);
+
+			FlxG.drawFramerate = 60;
 		}
-		FlxG.drawFramerate = 60;
+
 		
 	}
 
 	function onFocusOut() {
 		isFocused = false;
+
 		if (Type.getClass(FlxG.state) != PlayState) {
-			focusVolume = FlxG.sound.volume;
-			if (focusVolume > 0.3) {
-				focusOutVolume = 0.3;
+			
+			oldVol = FlxG.sound.volume;
+
+			if(oldVol > 0.3) {
+				newVol = 0.3;
+
 			} else {
-				if (focusVolume > 0.1) {
-					focusOutVolume = 0.1;
+				if (oldVol > 0.1) {
+					newVol = 0.1;
 				} else {
-					focusOutVolume = 0;
+					newVol = 0;
 				}
 			}
+
+			trace("Game unfocused");
+
+			if(volTween != null)
+				volTween.cancel();
+
+			volTween = FlxTween.tween(FlxG.sound, {volume: newVol}, dur);
+
+			FlxG.drawFramerate = 30;
 		}
-		if (volTween != null) {
-			volTween.cancel();
-			volTween = FlxTween.tween(FlxG.sound, {volume: focusOutVolume}, dur);
-		}
-		FlxG.drawFramerate = 40;
 	}
 }

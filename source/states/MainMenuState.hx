@@ -217,6 +217,7 @@ class MainMenuState extends MusicBeatState
 				}
 
 				if(FlxG.mouse.justPressed && canPress) {
+					spr.animation.play('selected');
 					canPress = false;
 					canSelect = false;
 					FlxG.sound.play(Paths.sound('confirmMenu'));

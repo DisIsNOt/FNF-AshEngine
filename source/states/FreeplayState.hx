@@ -219,6 +219,7 @@ class FreeplayState extends MusicBeatState
 				num++;
 		}
 	}*/
+	var isAssPressed:Bool = false;
 
 	var instPlaying:Int = -1;
 	public static var vocals:FlxSound = null;
@@ -318,8 +319,9 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
-			FlxG.sound.play(Paths.sound('cancelMenu'));
 			destroyFreeplayVocals();
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			MusicBeatState.switchState(new MainMenuState());
 		}
 
@@ -356,24 +358,10 @@ class FreeplayState extends MusicBeatState
 			}
 
 		}
-		else if (controls.ACCEPT && !foundError)
+		else if (controls.ACCEPT && !foundError && !isAssPressed)
 		{
-			grpSongs.forEach(function(spr:FlxSprite) {
-				FlxFlicker.flicker(spr, 1, 0.06, false, false);
-				if(curSelected != spr.ID) {
-					FlxTween.tween(spr, {alpha: 0}, 0.4, {
-						ease: FlxEase.quadOut,
-						onComplete: function(twn:FlxTween)
-						{
-							spr.kill();
-						}
-					});
-				} 
-				if(curSelected == spr.ID) {
-					FlxFlicker.flicker(spr, 1, 0.05, false ,false);
-				}
-			});
 			persistentUpdate = false;
+			isAssPressed = true;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 
