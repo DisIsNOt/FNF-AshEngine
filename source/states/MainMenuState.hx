@@ -44,11 +44,16 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
+	var pressedMouse:Bool = false;
+
 	override function create()
 	{
 		loadShit();
 		saveShit();
 		Application.current.window.title = "Friday Night Funkin': AshEngine";
+		if(pressedMouse) {
+			pressedMouse = false;
+		}
 		#if MODS_ALLOWED
 		Mods.pushGlobalMods();
 		#end
@@ -89,9 +94,6 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 
-		soundTest = new FlxButton(100, 0, "Sound Tester", musicButtonClicked);
-		add(soundTest);
-		
 		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
@@ -158,7 +160,7 @@ class MainMenuState extends MusicBeatState
 
 	var selectedSomethin:Bool = false;
 	var e:Int = 0;
-	var sel:Int = 0;
+	var s:Int = 0;
 	override function update(elapsed:Float)
 	{
 		if (FlxG.sound.music.volume < 0.8)
@@ -169,7 +171,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.followLerp = FlxMath.bound(elapsed * 9 / (FlxG.updateFramerate / 60), 0, 1);
 
 		if(FlxG.keys.justPressed.CONTROL) {
-			sel++;
+			s++;
 
 			menuItems.forEach(function(spr:FlxSprite){
 				if (spr.ID == curSelected) {
@@ -184,22 +186,24 @@ class MainMenuState extends MusicBeatState
 			}); 
 		}
 
-		if(sel == 1) {
+		if(s == 1) {
 			FlxG.mouse.enabled = false;
 			menuControlType = 'keyboard';
 			saveShit();
-			shit3.text = "Current Control Type: " + menuControlType;
+			shit3.text = "Current Control Type: " + menuControlType ;
 		}
-		if (sel > 1) {
+		if (s > 1) {
 			FlxG.mouse.enabled = true;
 			menuControlType = 'mouse';
 			saveShit();
 			shit3.text = "Current Control Type: " + menuControlType;
-			sel = 0;
+			s = 0;
 		}
 
+		trace('current controlMethod num = $s = $menuControlType');
+
 		menuItems.forEach(function(spr:FlxSprite) {
-			if(FlxG.mouse.overlaps(spr) && menuControlType == 'mouse' && canSelect) {
+			if(FlxG.mouse.overlaps(spr) && menuControlType == 'mouse' && canSelect && !pressedMouse) {
 				curSelected = spr.ID;
 				
 				if(spr.ID == curSelected) {
@@ -215,13 +219,13 @@ class MainMenuState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					e = curSelected;
 				}
-
-				if(FlxG.mouse.justPressed && canPress) {
-					spr.animation.play('selected');
+				
+				if(FlxG.mouse.justPressed && canPress && !pressedMouse) {
+					pressedMouse = true;
 					canPress = false;
 					canSelect = false;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
 
+					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(f:FlxFlicker){
 						var choice:String = optionShit[curSelected];
 
@@ -248,9 +252,17 @@ class MainMenuState extends MusicBeatState
 					});
 
 				}
+
+				if(spr.ID == curSelected &&  pressedMouse) {
+					spr.animation.play('selected');
+				}
+
 			} else {
-				if(menuControlType == 'mouse') {
-					spr.animation.play('idle');
+				spr.animation.play('idle');
+				spr.centerOffsets();
+
+				if(pressedMouse && spr.ID == curSelected) {
+					spr.animation.play('selected');
 					spr.centerOffsets();
 				}
 			}
@@ -373,17 +385,9 @@ class MainMenuState extends MusicBeatState
 		});
 	}
 
-	function musicButtonClicked() {
-		if(canPress) {
-			MusicBeatState.switchState(new states.MusicState());
-			FlxFlicker.flicker(soundTest, 1, 0.06);
-			FlxG.sound.play(Paths.sound("confirmMenu"));
-		}
-	}
-
 	function saveShit() {
 		FlxG.save.data.menuControlType = menuControlType;
-		FlxG.save.data.sel = sel;
+		FlxG.save.data.s = s;
 
 		FlxG.save.flush();
 
@@ -398,7 +402,7 @@ class MainMenuState extends MusicBeatState
 			menuControlType = FlxG.save.data.menuControlType;
 		}
 		if(FlxG.save.data.sel != null) {
-			sel = FlxG.save.data.sel;
+			s = FlxG.save.data.s;
 		}
 
 		var save:FlxSave = new FlxSave();
